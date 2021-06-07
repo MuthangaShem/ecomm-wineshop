@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartComponent } from './shared/cart/cart.component';
-import { FiltersComponent } from './shared/filters/filters.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { ItemCardComponent } from './shared/item-card/item-card.component';
+import { CartComponent } from './shared/components/cart/cart.component';
+import { FiltersComponent } from './shared/components/filters/filters.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { ItemCardComponent } from './shared/components/item-card/item-card.component';
+import { WineShopService } from './shared/services/wine-shop.service';
 import { WineshopComponent } from './wineshop/wineshop.component';
+
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { WineshopComponent } from './wineshop/wineshop.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [WineShopService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,17 +1,22 @@
-<div class="item">
+<div *ngFor="let item of $wineshopData | async" class="item">
   <div class="image">
     <img
-      src="https://storage.googleapis.com/wineshop-assets/wine-bottles/breidecker.jpg"
+      [src]="
+        'https://storage.googleapis.com/wineshop-assets/wine-bottles/' +
+        item.image
+      "
       alt="breidecker wine bottle"
     />
   </div>
   <div class="details">
-    <div class="bottle-name">13 <span> Breidecker </span></div>
+    <div class="bottle-name">
+      {{ item.no }} <span> {{ item.name }} </span>
+    </div>
     <div class="prices">
       <div class="bottle-price">
         <div>
           <p>Bottle</p>
-          <span>$ 17.90</span>
+          <span>$ {{ item.cost.bottle }}</span>
         </div>
         <div><input type="number" /> QTY</div>
         <button class="btn-light">Details</button>
@@ -20,7 +25,7 @@
       <div class="case-price">
         <div>
           <p>Case</p>
-          <span>$ 204.06</span>
+          <span>$ {{ item.cost.bottle }}</span>
         </div>
         <div><input type="number" /> QTY</div>
         <button class="btn-dark">Add to Cart</button>
