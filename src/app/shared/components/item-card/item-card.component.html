@@ -1,4 +1,4 @@
-<div *ngFor="let item of $wineshopData | async" class="item">
+<div *ngFor="let item of items | async" class="item">
   <div class="image">
     <img
       [src]="
@@ -18,17 +18,25 @@
           <p>Bottle</p>
           <span>$ {{ item.cost.bottle }}</span>
         </div>
-        <div><input type="number" /> QTY</div>
+        <div>
+          <input type="number" #bottleQ />
+          QTY
+        </div>
         <button class="btn-light">Details</button>
       </div>
 
       <div class="case-price">
         <div>
           <p>Case</p>
-          <span>$ {{ item.cost.bottle }}</span>
+          <span>$ {{ item.cost.case }}</span>
         </div>
-        <div><input type="number" /> QTY</div>
-        <button class="btn-dark">Add to Cart</button>
+        <div><input type="number" #caseQ /> QTY</div>
+        <button
+          class="btn-dark"
+          (click)="addProduct(item, bottleQ.value, caseQ.value)"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>

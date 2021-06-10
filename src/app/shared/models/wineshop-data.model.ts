@@ -13,3 +13,9 @@ export interface Cost {
   bottle: number;
   case: number;
 }
+
+export interface CartItem {
+  item: WineDataModel;
+  caseQuantity: number;
+  bottleQuantity: number;
+}

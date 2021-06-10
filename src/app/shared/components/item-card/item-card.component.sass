@@ -2,6 +2,16 @@
   display: flex
   width: 390px
   margin-bottom: 5em
+  // box-shadow: none
+  transition: all 0.3s ease-in
+
+  &:hover
+    // box-shadow: -1px 1px 28px -3px rgba(0,0,0,0.41)
+    transform: scale(1.01)
+    cursor: pointer
+
+  .image img
+    height: 320px
 
   .details
     display: flex
@@ -32,10 +42,6 @@
         > div
           text-align: left
 
-      .bottle-price
-
-
-
     button
       margin: 10px 0 0 0
 
@@ -52,10 +58,11 @@
       span
         font-size: 30px
 
-  .image img
-    height: 320px
 
 input
   height: 35px
   width: 35px
   border: 2px solid black
+
+.disabled
+  cursor: not-allowed
