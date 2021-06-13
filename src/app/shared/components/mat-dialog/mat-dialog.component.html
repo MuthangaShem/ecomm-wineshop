@@ -2,14 +2,15 @@
 <div mat-dialog-content>
   <!-- Condend -->
   <mat-horizontal-stepper
-    linear="false"
     errorMessage="Fill all required fields"
     #stepper
     [orientation]="(stepperOrientation | async)!"
+    [linear]="true"
   >
+    <!-- items in cart -->
     <mat-step optional="false">
       <mat-list>
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Cart</ng-template>
 
         <div mat-subheader>Items In Cart</div>
         <mat-list-item *ngFor="let item of data">
@@ -38,10 +39,9 @@
       </mat-list>
       <div>
         <button class="btn-light" matStepperNext>Next</button>
-
-        <button class="btn-dark" matStepperPrevious>Back</button>
       </div>
     </mat-step>
+    <!-- shipping details -->
     <mat-step
       [stepControl]="firstFormGroup"
       errorMessage="fill all required fileds"
@@ -50,6 +50,7 @@
     >
       <ng-template matStepLabel>Shipping Details</ng-template>
 
+      All Fields should be filled
       <form [formGroup]="firstFormGroup">
         <mat-form-field>
           <mat-label>Full Name</mat-label>
@@ -61,12 +62,15 @@
           />
         </mat-form-field>
         <mat-form-field>
+          <span matPrefix>+254 &nbsp;</span>
+
           <mat-label>Phone Number</mat-label>
           <input
             matInput
             placeholder="E.g 0728800124"
             formControlName="phoneNumber"
             required
+            type="number"
           />
         </mat-form-field>
         <mat-form-field>
@@ -88,18 +92,25 @@
           />
         </mat-form-field>
       </form>
-      <button class="btn-light" matStepperNext>Next</button>
+      <button
+        class="btn-light"
+        [disabled]="!firstFormGroup.valid"
+        matStepperNext
+      >
+        Complete
+      </button>
 
       <button class="btn-dark" matStepperPrevious>Back</button>
     </mat-step>
 
-    <mat-step>
+    <!-- complete buying -->
+    <mat-step editable="false">
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
         <button class="btn-light" matStepperNext>Next</button>
 
-        <button class="btn-dark" matStepperPrevious (click)="(stepper)">
+        <button class="btn-dark" matStepperPrevious (click)="stepper.reset()">
           Reset
         </button>
       </div>

@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { StepperOrientation } from '@angular/cdk/stepper';
+import { StepperOrientation, STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -11,7 +11,10 @@ import { CartItem } from './../../models/wineshop-data.model';
 @Component({
   selector: 'app-mat-dialog',
   templateUrl: './mat-dialog.component.html',
-  styleUrls: ['./mat-dialog.component.sass']
+  styleUrls: ['./mat-dialog.component.sass'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }
+  }]
 })
 export class MatDialogComponent implements OnInit {
 
