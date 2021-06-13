@@ -94,7 +94,7 @@
       </form>
       <button
         class="btn-light"
-        [disabled]="!firstFormGroup.valid"
+        (click)="firstFormGroup.markAllAsTouched()"
         matStepperNext
       >
         Complete
@@ -106,12 +106,20 @@
     <!-- complete buying -->
     <mat-step editable="false">
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <div class="center col">
+        <h4>Check Out complete 😃</h4>
+        <p>Your wine will arrive in a few minutes 🚚</p>
+      </div>
       <div>
-        <button class="btn-light" matStepperNext>Next</button>
+        <!-- <button class="btn-light" matStepperNext>Back</button> -->
 
-        <button class="btn-dark" matStepperPrevious (click)="stepper.reset()">
-          Reset
+        <button
+          class="btn-dark"
+          mat-dialog-close
+          matStepperPrevious
+          (click)="stepper.reset()"
+        >
+          Close
         </button>
       </div>
     </mat-step>
