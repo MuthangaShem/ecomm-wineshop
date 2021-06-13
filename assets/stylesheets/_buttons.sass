@@ -1,0 +1,30 @@
+
+$dark-btn-background: #4d4d4d
+$light-btn-background: #d8d8d8
+
+@mixin btn
+  height: 40px
+  width: 120px
+  border-radius: 0
+  border: none
+  font-size: medium
+  padding: 10px
+  margin: 10px
+
+.btn-light
+  @include btn
+  background-color: $light-btn-background
+  color: #4e4e4e
+
+  &:hover
+    cursor: pointer
+    background: #c5c5c5
+
+.btn-dark
+  @include btn
+  background-color: $dark-btn-background
+  color: #ffffff
+
+  &:hover
+    cursor: pointer
+    background: #6b6b6b
