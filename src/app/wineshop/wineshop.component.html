@@ -1,9 +1,22 @@
 <div class="filter-cart">
   <app-filters></app-filters>
-  <app-cart></app-cart>
+  <app-cart
+    *ngIf="absoluteBreakPoint | async"
+    [cart]="cart"
+    (emptyCart)="emptyCart()"
+    [minimal]="absoluteBreakPoint | async"
+  ></app-cart>
 </div>
 
 <app-item-card
   [items]="$wineshopData"
   (productAdded)="addToCart($event)"
 ></app-item-card>
+
+<app-cart
+  style="position: fixed; bottom: 0; width: 100vw; left: 0; padding: 0 3rem"
+  *ngIf="!(absoluteBreakPoint | async) && cart.length"
+  [cart]="cart"
+  (emptyCart)="emptyCart()"
+  [minimal]="absoluteBreakPoint | async"
+></app-cart>

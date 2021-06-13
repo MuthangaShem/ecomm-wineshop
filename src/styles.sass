@@ -10,9 +10,19 @@
   box-sizing: border-box
   // font-family: 'Rasa', serif
 
+:host ::ng-deep
+  .mat-horizontal-stepper-header-container
+    position: inherit
 
 .container
   padding: 35px 100px
   text-align: center
   width: 100vw
   position: relative
+
+.spacer
+  flex: 1 1 auto
+
+@media ( max-width: 1140px )
+  .container
+    padding-bottom: 144px

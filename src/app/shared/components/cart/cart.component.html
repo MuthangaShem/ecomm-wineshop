@@ -1,14 +1,33 @@
-<div class="cart">
-  <div class="delivery-info center">Delivery Info</div>
-  <div class="cart-quantity center">36 <span>Bottles</span></div>
-  <div class="cart-specifics">
-    <div class="exact-items center">
-      <span>36 × 2013 <span> Breidecker </span></span>
-      <button class="btn-light">Empty Cart</button>
-    </div>
-    <div class="cash-amount center">
-      <span>Ksh 432.56</span>
-      <button class="btn-dark">Check Out</button>
+<ng-container *ngIf="minimal; else minimalTemplate">
+  <div class="cart">
+    <div class="delivery-info center">Delivery Info</div>
+    <div class="cart-quantity center">{{ bottles }} <span>Bottles</span></div>
+    <div class="cart-specifics">
+      <div class="exact-items center">
+        <span>36 × 2013 <span> Breidecker </span></span>
+        <button (click)="onEmptyCart()" class="btn-light">Empty Cart</button>
+      </div>
+      <div class="cash-amount center">
+        <span>Ksh {{ totalCost }}</span>
+        <button class="btn-dark" (click)="checkOut()">Check Out</button>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+<ng-template #minimalTemplate>
+  <div class="cart-minimal center">
+    <div class="details center">
+      <div class="bottles">
+        <span> {{ bottles }} Bottles</span
+        ><em (click)="checkOut()">View Cart</em>
+      </div>
+      <div class="cash-amount center">
+        <span>Ksh {{ totalCost }}</span>
+      </div>
+    </div>
+    <div class="buttons center">
+      <button class="btn-dark" (click)="checkOut()">Check Out</button>
+      <button (click)="onEmptyCart()" class="btn-light">Empty Cart</button>
+    </div>
+  </div>
+</ng-template>

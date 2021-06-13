@@ -5,6 +5,7 @@
   height: 200px
   background: #ffffff
   column-gap: 3px
+  padding-right: 1rem
 
   > div
     background: #f7f7f7
@@ -34,6 +35,44 @@
       height: 50%
       justify-content: space-evenly
 
+// @media ( max-width: 1140px )
+//   .cart
+//     grid-template-columns: 1fr 3fr
+
+.fixed
+  position: fixed
+  bottom: 0
+  width: 100vw
+  left: 0
 
 
+.cart-minimal
+  border: none
+  background: #ffffff
+  justify-content: space-between
+  height: 144px
+  // width: 100vw
+
+  .details
+    flex-direction: column
+    align-items: flex-start
+
+    .bottles span
+      font-size: 30px
+      color: #4a4a4a
+
+    .bottles em
+      text-decoration: underline
+      font-size: 15px
+      margin-left: 1rem
+
+      &:hover
+        cursor: pointer
+
+    .cash-amount
+      font-size: 30px
+      color: #4a4a4a
+
+  .buttons
+    flex-direction: column
 

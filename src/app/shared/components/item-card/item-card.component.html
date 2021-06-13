@@ -19,7 +19,7 @@
           <span>$ {{ item.cost.bottle }}</span>
         </div>
         <div>
-          <input type="number" #bottleQ />
+          <input min="0" type="number" #bottleQ />
           QTY
         </div>
         <button class="btn-light">Details</button>
@@ -30,7 +30,7 @@
           <p>Case</p>
           <span>$ {{ item.cost.case }}</span>
         </div>
-        <div><input type="number" #caseQ /> QTY</div>
+        <div><input min="0" type="number" #caseQ /> QTY</div>
         <button
           class="btn-dark"
           (click)="addProduct(item, bottleQ.value, caseQ.value)"

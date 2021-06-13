@@ -6,12 +6,19 @@
   position: relative
   margin-bottom: 5em
 
-app-cart
-  width: 60%
-
-
 app-item-card
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(390px, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
   column-gap: 2em
   justify-items: center
+
+app-filters
+  width: 100%
+
+@media ( max-width: 1140px )
+  app-filters
+    width: fit-content
+
+  .filter-cart
+    justify-content: center
+

@@ -27,8 +27,7 @@ export class ItemCardComponent implements OnInit {
       this.productAdded.emit(cartObj);
       return
     }
-    console.error('please add a case or bottle quantity')
-
+    console.error('please add a case or bottle quantity');
   }
 
 }

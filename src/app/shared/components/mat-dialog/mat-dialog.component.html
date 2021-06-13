@@ -1,0 +1,108 @@
+<h1 mat-dialog-title>Check Out</h1>
+<div mat-dialog-content>
+  <!-- Condend -->
+  <mat-horizontal-stepper
+    linear="false"
+    errorMessage="Fill all required fields"
+    #stepper
+    [orientation]="(stepperOrientation | async)!"
+  >
+    <mat-step optional="false">
+      <mat-list>
+        <ng-template matStepLabel>Fill out your name</ng-template>
+
+        <div mat-subheader>Items In Cart</div>
+        <mat-list-item *ngFor="let item of data">
+          <img
+            mat-list-icon
+            height="50"
+            [src]="
+              'https://storage.googleapis.com/wineshop-assets/wine-bottles/' +
+              item.item.image
+            "
+            [alt]="item.item.image"
+          />
+
+          <div mat-line>{{ item.bottleQuantity }} bottles</div>
+          <div mat-line>{{ item.caseQuantity }} case(s)</div>
+
+          <h2>{{ item.item.name }}</h2>
+          <!-- <div class="spacer"></div>
+          <button class="btn-dark">×</button> -->
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader>Total Cost:</div>
+        <mat-list-item>
+          <h3>Ksh. {{ totalCost }}</h3>
+        </mat-list-item>
+      </mat-list>
+      <div>
+        <button class="btn-light" matStepperNext>Next</button>
+
+        <button class="btn-dark" matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+    <mat-step
+      [stepControl]="firstFormGroup"
+      errorMessage="fill all required fileds"
+      editable="true"
+      optional="false"
+    >
+      <ng-template matStepLabel>Shipping Details</ng-template>
+
+      <form [formGroup]="firstFormGroup">
+        <mat-form-field>
+          <mat-label>Full Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name, First name"
+            formControlName="fullNames"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            placeholder="E.g 0728800124"
+            formControlName="phoneNumber"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input
+            matInput
+            placeholder="Buru Buru"
+            formControlName="location"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Address/Estate</mat-label>
+          <input
+            matInput
+            placeholder="Buru Heights 3rd floor"
+            formControlName="address"
+            required
+          />
+        </mat-form-field>
+      </form>
+      <button class="btn-light" matStepperNext>Next</button>
+
+      <button class="btn-dark" matStepperPrevious>Back</button>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button class="btn-light" matStepperNext>Next</button>
+
+        <button class="btn-dark" matStepperPrevious (click)="(stepper)">
+          Reset
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
