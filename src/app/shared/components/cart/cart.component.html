@@ -2,23 +2,32 @@
   <div class="cart">
     <div class="delivery-info center">Delivery Info</div>
     <div class="cart-quantity center">{{ bottles }} <span>Bottles</span></div>
-    <div class="cart-specifics">
-      <div class="exact-items center">
-        <ng-container *ngIf="bottles; else emptyCart">
-          <!-- <span>36 × 2013 <span> Breidecker </span></span> -->
-          <span
-            >{{ cart[0].bottleQuantity }} bottles /
-            {{ cart[0].caseQuantity }} cases × {{ cart[0].item.name }}
-          </span>
-        </ng-container>
-        <ng-template #emptyCart>
-          <span>Cart is Empty</span>
-        </ng-template>
+    <div class="cart-specifics center">
+      <div class="items">
+        <div class="exact-items center">
+          <ng-container *ngIf="bottles; else emptyCart">
+            <span>
+              <span> {{ cart[0].bottleQuantity }} bottles </span>
+              <span *ngIf="cart[0].caseQuantity">
+                /
+                {{ cart[0].caseQuantity }} cases
+              </span>
+              × {{ cart[0].item.name }}
+            </span>
+          </ng-container>
+          <ng-template #emptyCart>
+            <span>Cart is Empty</span>
+          </ng-template>
 
-        <button (click)="onEmptyCart()" class="btn-light">Empty Cart</button>
+          <!-- <button (click)="onEmptyCart()" class="btn-light">Empty Cart</button> -->
+        </div>
+        <div class="cash-amount center">
+          <span>Ksh {{ totalCost }}</span>
+          <!-- <button class="btn-dark" (click)="checkOut()">Check Out</button> -->
+        </div>
       </div>
-      <div class="cash-amount center">
-        <span>Ksh {{ totalCost }}</span>
+      <div class="buttons center">
+        <button class="btn-light" (click)="onEmptyCart()">Empty Cart</button>
         <button class="btn-dark" (click)="checkOut()">Check Out</button>
       </div>
     </div>

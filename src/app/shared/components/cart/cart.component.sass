@@ -5,10 +5,17 @@
   height: 200px
   background: #ffffff
   column-gap: 3px
-  padding-right: 1rem
+  padding-left: 1rem
 
   > div
     background: #f7f7f7
+
+  > div:not(:last-child)
+    width: 200px
+
+  > div:last-child
+    width: 400px
+
 
   .delivery-info
     color: #4d4d4d
@@ -21,19 +28,24 @@
     color: #4a4a4a
 
   .cart-specifics
-    flex-direction: column
+    // flex-direction: column
+    justify-content: space-evenly
 
-    .exact-items span
+    .items .exact-items span
         font-size: 1.2em
         color: #4d4d4d
 
-    .cash-amount span
+    .items .cash-amount span
       font-size: 2.8em
       color: #4d4d4d
 
-    > div
+    .items > div
       height: 50%
       justify-content: space-evenly
+
+    .buttons
+      flex-direction: column
+
 
 // @media ( max-width: 1140px )
 //   .cart
@@ -76,3 +88,30 @@
   .buttons
     flex-direction: column
 
+
+@media ( max-width: 1350px )
+
+  .cart > div:not(:last-child)
+    width: 150px
+
+  .cart > div:last-child
+    width: 300px
+
+  .cash-amount span
+    font-size: 1.8em !important
+    color: #4d4d4d !important
+
+  .exact-items span
+    font-size: 1.0em !important
+    color: #4d4d4d !important
+
+  .cart-quantity
+    font-size: 25px !important
+
+@media ( max-width: 1280px )
+
+  .cart > div:not(:last-child)
+    width: 130px
+
+  .cart > div:last-child
+    width: 260px
