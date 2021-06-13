@@ -15,7 +15,7 @@
 
 <app-cart
   style="position: fixed; bottom: 0; width: 100vw; left: 0; padding: 0 3rem"
-  *ngIf="!(absoluteBreakPoint | async) && cart.length"
+  *ngIf="!(absoluteBreakPoint | async)"
   [cart]="cart"
   (emptyCart)="emptyCart()"
   [minimal]="absoluteBreakPoint | async"
